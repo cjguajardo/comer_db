@@ -25,4 +25,29 @@ class DB {
     return $this->pdo;
   }
 
+  public function insert($table, $data) {
+    $columns = [];
+    $values = [];
+    $valInserts = '';
+
+    foreach($data as $col => $val){
+      $columns[] = $col;
+      $values[] = $val;
+      $valInserts[] = ":$col";
+    }
+
+    $columns = implode(',',$columns);
+    $values = implode(',', $values);
+    $valInserts = implode(',',$valInserts);
+
+    $sql = "INSERT INTO $table($columns) VALUES($valInserts)";
+    $stmt = $this->pdo->prepare($sql);
+    foreach($data as $col => $val){
+      $stmt->bindValue(":$col", $val);
+    }
+    $stmt->execute();
+
+    return $this->pdo->lastInsertId();
+  }
+
 }
