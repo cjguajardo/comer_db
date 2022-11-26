@@ -1,3 +1,8 @@
 {
-  "autor": "Carlos Guajardo Cornejo"
+  "autor": {
+            "name": "Carlos Guajardo Cornejo",
+            "email": "cj.guajardo@cgcapps.cl",
+            "homepage": "https://www.cgcapps.cl",
+            "role": "Developer"
+        }
 }
