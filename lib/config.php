@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Lib;
 
 class Config {
   //SQLite config
