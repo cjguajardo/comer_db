@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Lib;
+require_once("config.php");
 
 class DB {
   private $pdo;
@@ -12,10 +12,10 @@ class DB {
       }
       else if(Config::CONNECTION==='mysql'){
         try {
-          $this->pdo = new PDO('mysql:host='.Config::DB_HOST.';dbname='.Config::DB_NAME, Config::DB_USERNAME, Config::DB_PASSWORD);
+          $this->pdo = new \PDO('mysql:host='.Config::DB_HOST.';dbname='.Config::DB_NAME, Config::DB_USERNAME, Config::DB_PASSWORD);
           // set the PDO error mode to exception
-          $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          echo "Connected successfully"; 
+          $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+          //echo "Connected successfully"; 
         } catch(PDOException $e) {
           echo "Connection failed: " . $e->getMessage();
         }
@@ -48,6 +48,17 @@ class DB {
     $stmt->execute();
 
     return $this->pdo->lastInsertId();
+  }
+
+  public function query($sql){
+    try{
+      $result = $this->pdo->query($sql, PDO::FETCH_ASSOC);
+      return $result;
+    }catch(Exception $e){
+      echo $e->getMessage();
+    }
+
+    return false;
   }
 
 }

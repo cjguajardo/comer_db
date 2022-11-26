@@ -1,3 +1,8 @@
+<?php
+
+  session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +12,10 @@
   <title>Administrador</title>
 </head>
 <body>
-  
+<?php 
+  if(isset($_SESSION['USER'])){
+    var_dump($_SESSION['USER']);
+  } 
+?>
 </body>
 </html>

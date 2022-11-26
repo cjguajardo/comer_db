@@ -1,3 +1,9 @@
+<?php
+
+  //session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,5 +14,12 @@
 </head>
 <body>
   
+<?php 
+  //if(isset($_SESSION['USER'])){
+  //  var_dump($_SESSION['USER']);
+  //} 
+
+  include("./productos.php");
+?>
 </body>
 </html>
