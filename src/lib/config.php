@@ -2,8 +2,8 @@
 
 class Config {
   //SQLite config
-  const CONNECTION = 'mysql'; // sqlite, mysql
-  const PATH_TO_SQLITE_FILE = './comer.db';
+  const CONNECTION = 'sqlite'; // sqlite, mysql
+  const PATH_TO_SQLITE_FILE = __DIR__.'/../db/comer.db';
 
   //MySql config
   const DB_HOST = 'localhost';

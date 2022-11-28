@@ -28,7 +28,7 @@ class DB {
   public function insert($table, $data) {
     $columns = [];
     $values = [];
-    $valInserts = '';
+    $valInserts = [];
 
     foreach($data as $col => $val){
       $columns[] = $col;
@@ -48,17 +48,6 @@ class DB {
     $stmt->execute();
 
     return $this->pdo->lastInsertId();
-  }
-
-  public function query($sql){
-    try{
-      $result = $this->pdo->query($sql, PDO::FETCH_ASSOC);
-      return $result;
-    }catch(Exception $e){
-      echo $e->getMessage();
-    }
-
-    return false;
   }
 
 }
